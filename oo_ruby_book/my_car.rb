@@ -10,11 +10,17 @@ Then add an accessor method that allows you to view, but not modify, the year of
 
 You want to create a nice interface that allows you to accurately describe the action you want your program to perform. 
 Create a method called spray_paint that can be called on an object and will modify the color of the car.
+
+Add a class method to your MyCar class that calculates the gas mileage of any car.
 =end
 
 class MyCar
   attr_accessor :color
   attr_reader :year
+
+  def self.efficiency(litres, kilometers)
+    puts "#{kilometers / litres} km per litre of petrol."
+  end
 
   def initialize(year, color, model)
     @year = year
@@ -46,31 +52,25 @@ class MyCar
     self.color = new_color
     puts "Your new #{self.color} paint job looks great!"
   end
+
+  def to_s
+    "This car is a #{self.year}, #{self.color} #{@model}."
+  end
 end
 
 gerty = MyCar.new(2001, 'silver', 'minivan')
 gerty.current_speed
-sleep 1
 gerty.speed_up(120)
-sleep 1
 gerty.current_speed
-sleep 1
 gerty.brake(60)
-sleep 1
 gerty.current_speed
-sleep 1
 gerty.brake(59)
-sleep 1
 gerty.current_speed
-sleep 1
 gerty.shut_off
-sleep 1
 gerty.current_speed
-sleep 1
 puts gerty.color
-sleep 1
 gerty.spray_paint('rusty silver')
-sleep 1
 puts gerty.color
-sleep 1
 puts gerty.year
+puts MyCar.efficiency(30, 100)
+puts gerty
